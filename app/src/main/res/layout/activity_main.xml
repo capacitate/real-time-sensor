@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:id="@+id/container" tools:context=".MainActivity"
+    tools:deviceIds="wear">
+
+    <TextView
+        android:id="@+id/blank"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=" "/>
+
+    <TextView android:id="@+id/azimuth" android:layout_width="wrap_content"
+        android:layout_height="wrap_content" android:text="@string/hello_world"
+        android:layout_below="@id/blank"
+        android:layout_centerHorizontal="true"
+        android:textColor="#ffff00ff"/>
+
+    <TextView android:id="@+id/pitch" android:layout_width="wrap_content"
+        android:layout_height="wrap_content" android:text="android World!"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/azimuth"
+        android:textColor="#ff00ffff"
+        />
+
+    <TextView android:id="@+id/roll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:textColor="#ff00ff00"
+        android:text = "Coonquer the world"
+        android:layout_below="@id/pitch"
+        />
+
+    <TextView android:id="@+id/calibration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:textColor="#ffcccccc"
+        android:text = "Coonquer the world"
+        android:layout_below="@id/roll"
+        />
+
+    <TextView
+        android:id="@+id/accX"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:textColor="#ffff00ff"
+        android:text = "World piece"
+        android:layout_below="@id/calibration"/>
+
+    <TextView
+        android:id="@+id/accY"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:textColor="#ff00ffff"
+        android:text="World piece"
+        android:layout_below="@id/accX"
+        />
+
+    <TextView
+        android:id="@+id/accZ"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:textColor="#ff00ff00"
+        android:layout_below="@id/accY"
+        />
+
+    <TextView android:id="@+id/blank2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:textColor="#ffcccccc"
+        android:text = "Blank for the next"
+        android:layout_below="@id/accZ"
+        />
+
+    <TextView
+        android:id="@+id/linaccX"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:textColor="#ffff00ff"
+        android:text = "World piece"
+        android:layout_below="@id/blank2"/>
+
+    <TextView
+        android:id="@+id/linaccY"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:textColor="#ff00ffff"
+        android:text="World piece"
+        android:layout_below="@id/linaccX"
+        />
+
+    <TextView
+        android:id="@+id/linaccZ"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:textColor="#ff00ff00"
+        android:layout_below="@id/linaccY"
+        />
+
+</RelativeLayout>
