@@ -26,13 +26,13 @@ public class MainActivity extends WearableActivity {
 
     private TextView mTextCalibration;
 
-    private TextView mTextAccX;
-    private TextView mTextAccY;
-    private TextView mTextAccZ;
+    private TextView mTextX;
+    private TextView mTextY;
+    private TextView mTextZ;
 
-    private TextView mTextLinAccX;
-    private TextView mTextLinAccY;
-    private TextView mTextLinAccZ;
+    private TextView mTextX2;
+    private TextView mTextY2;
+    private TextView mTextZ2;
 
     private String TAG = "MainActivity";
 
@@ -47,13 +47,21 @@ public class MainActivity extends WearableActivity {
                 mTextPitch.setText("ori-Y\t" + event.values[1]);
                 mTextRoll.setText("ori-Z\t" + event.values[2]);
             } else if(event.sensor.getType() == Sensor.TYPE_ACCELEROMETER){
-                mTextAccX.setText("acc-X\t" + event.values[0]);
-                mTextAccY.setText("acc-Y\t" + event.values[1]);
-                mTextAccZ.setText("acc-Z\t" + event.values[2]);
+                mTextX.setText("acc-X\t" + event.values[0]);
+                mTextY.setText("acc-Y\t" + event.values[1]);
+                mTextZ.setText("acc-Z\t" + event.values[2]);
             } else if(event.sensor.getType() == Sensor.TYPE_LINEAR_ACCELERATION){
-                mTextLinAccX.setText("linacc-X\t" + event.values[0]);
-                mTextLinAccY.setText("linacc-Y\t" + event.values[1]);
-                mTextLinAccZ.setText("linacc-Z\t" + event.values[2]);
+                mTextX2.setText("linacc-X\t" + event.values[0]);
+                mTextY2.setText("linacc-Y\t" + event.values[1]);
+                mTextZ2.setText("linacc-Z\t" + event.values[2]);
+            } else if(event.sensor.getType() == Sensor.TYPE_GAME_ROTATION_VECTOR){
+                mTextX.setText("game_rot-x\t" + event.values[0]);
+                mTextY.setText("game_rot-y\t" + event.values[1]);
+                mTextZ.setText("game_rot-z\t" + event.values[2]);
+            } else if(event.sensor.getType() == Sensor.TYPE_ROTATION_VECTOR){
+                mTextX2.setText("rot-x\t" + event.values[0]);
+                mTextY2.setText("rot-y\t" + event.values[1]);
+                mTextZ2.setText("rot-theta\t" + event.values[3]);
             }
         }
 
@@ -93,18 +101,22 @@ public class MainActivity extends WearableActivity {
 
         mTextCalibration = (TextView) findViewById(R.id.calibration);
 
-        mTextAccX = (TextView) findViewById(R.id.accX);
-        mTextAccY = (TextView) findViewById(R.id.accY);
-        mTextAccZ = (TextView) findViewById(R.id.accZ);
+        //accelerator can reveal the tilt information
+        mTextX = (TextView) findViewById(R.id.accX);
+        mTextY = (TextView) findViewById(R.id.accY);
+        mTextZ = (TextView) findViewById(R.id.accZ);
 
-        mTextLinAccX = (TextView) findViewById(R.id.linaccX);
-        mTextLinAccY = (TextView) findViewById(R.id.linaccY);
-        mTextLinAccZ = (TextView) findViewById(R.id.linaccZ);
+        //linear accel can represent the degree of power
+        mTextX2 = (TextView) findViewById(R.id.linaccX);
+        mTextY2 = (TextView) findViewById(R.id.linaccY);
+        mTextZ2 = (TextView) findViewById(R.id.linaccZ);
 
         mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         mSensorManager.registerListener(mSensorListener, mSensorManager.getDefaultSensor(Sensor.TYPE_ORIENTATION), SensorManager.SENSOR_DELAY_NORMAL);
         mSensorManager.registerListener(mSensorListener, mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER), SensorManager.SENSOR_DELAY_NORMAL);
         mSensorManager.registerListener(mSensorListener, mSensorManager.getDefaultSensor(Sensor.TYPE_LINEAR_ACCELERATION), SensorManager.SENSOR_DELAY_NORMAL);
+        mSensorManager.registerListener(mSensorListener, mSensorManager.getDefaultSensor(Sensor.TYPE_GAME_ROTATION_VECTOR), SensorManager.SENSOR_DELAY_NORMAL);
+        mSensorManager.registerListener(mSensorListener, mSensorManager.getDefaultSensor(Sensor.TYPE_ROTATION_VECTOR), SensorManager.SENSOR_DELAY_NORMAL);
     }
 
     @Override
